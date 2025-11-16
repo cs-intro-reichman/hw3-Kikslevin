@@ -30,7 +30,7 @@ public class Anagram {
 	// as is. For example, the string "What? No way!" becomes "whatnoway"
 	public static String preProcess(String str) {
 		str = str.toLowerCase();
-		str = str.replaceAll("[^a-z ]", "");
+		str = str.replaceAll("[^a-z]", "");
 		return str;
 	} 
 
