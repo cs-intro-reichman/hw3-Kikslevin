@@ -41,12 +41,12 @@ public class LoanCalc {
 	// the number of periods (n), and epsilon, the approximation's accuracy
 	// Side effect: modifies the class variable iterationCounter.
     public static double bruteForceSolver(double loan, double rate, int n, double epsilon) {
-		rate = (rate / 100) / 12; // monthly interest rate
-		epsilon = 0.01;
+		rate = (rate / 100) / 12;
 		double increment = 0.1 ;
-		double guess = loan / n;      //initial guess which doesn't consider interest
+		double guess = (loan * rate) / (1 - Math.pow(rate + 1, -n));   //initial guess which doesn't consider interest
 		iterationCounter = 0;
-		int maxIterations = 100000;
+		int maxIterations = 2000000;
+
 		while (Math.abs(endBalance(loan, rate, n, guess)) >= epsilon && iterationCounter < maxIterations){
 			guess += increment;
 			iterationCounter++;
@@ -60,9 +60,9 @@ public class LoanCalc {
 	// the number of periods (n), and epsilon, the approximation's accuracy
 	// Side effect: modifies the class variable iterationCounter.
     public static double bisectionSolver(double loan, double rate, int n, double epsilon) { 
-	rate = (rate / 100) / 12; 
+	rate = (rate/100)/12;
 	double L = 0.0;     // Lower bound
-	double H = loan;        // Upper bound
+	double H = loan * Math.pow(1 + rate, n);        // Upper bound
 	iterationCounter = 0;
 	double G;
 
