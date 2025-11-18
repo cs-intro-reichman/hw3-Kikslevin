@@ -36,8 +36,8 @@ public class Anagram {
 
 	// Returns true if the two given strings are anagrams, false otherwise.
 	public static boolean isAnagram(String str1, String str2) {
-		str1 = str1.toLowerCase().replaceAll("[^a-z ]", "");
-		str2 = str2.toLowerCase().replaceAll("[^a-z ]", "");
+		str1 = str1.toLowerCase().replaceAll("[^a-z]", "");
+		str2 = str2.toLowerCase().replaceAll("[^a-z]", "");
 		if (str1.length() != str2.length()) {
 			return false;
 		}
